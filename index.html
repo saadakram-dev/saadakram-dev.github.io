@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Saad Akram, playable ads developer: Unity Luna Playworks and HTML5 playables for AppLovin, Google, TikTok, Mintegral, Meta and Unity Ads.">
+<meta property="og:title" content="Saad Akram – Playable Ads Developer">
+<meta property="og:description" content="Playable ads in Unity Luna Playworks and hand-coded HTML5, network-ready for every major ad network.">
+<meta property="og:image" content="assets/saad-akram.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+<title>Saad Akram – Playable Ads Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF1F6; --surface:#FFFFFF; --ink:#1B1F3B; --muted:#565C74; --line:#D3D8E5;
+  --cta:#0B8A5F; --cta-ink:#FFFFFF; --accent:#FFC83D; --accent-ink:#1B1F3B;
+  --phone:#1B1F3B; --screen:#2B3160; --screen-ink:#FFFFFF; --tile:#3A417A;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12152A; --surface:#1B1F3B; --ink:#EEF1F6; --muted:#A6ACC4; --line:#2F3559;
+    --cta:#34D399; --cta-ink:#08261A; --accent:#FFD166; --accent-ink:#1B1F3B;
+    --phone:#070914; --screen:#262B55; --screen-ink:#FFFFFF; --tile:#363D78;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12152A; --surface:#1B1F3B; --ink:#EEF1F6; --muted:#A6ACC4; --line:#2F3559;
+  --cta:#34D399; --cta-ink:#08261A; --accent:#FFD166; --accent-ink:#1B1F3B;
+  --phone:#070914; --screen:#262B55; --screen-ink:#FFFFFF; --tile:#363D78;
+  color-scheme: dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size:1.0625rem; line-height:1.6;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+h1,h2,h3{font-family:"Bricolage Grotesque", "Segoe UI", Helvetica, Arial, sans-serif; line-height:1.08; margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.2rem;text-decoration:none}
+.top nav{display:flex;gap:22px}
+.top nav a{text-decoration:none;color:var(--muted);font-weight:500}
+.top nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding:72px 0 88px}
+.where{color:var(--muted);margin:0 0 18px;font-weight:500}
+.hero h1{font-size:clamp(2.4rem,5.4vw,4.4rem);font-weight:800;letter-spacing:-0.02em;max-width:13ch}
+.lede{margin:24px 0 0;max-width:56ch;color:var(--muted);font-size:1.15rem}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid transparent;cursor:pointer;font:inherit;font-weight:600}
+.btn.primary{background:var(--cta);color:var(--cta-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn.ghost:hover{background:var(--surface)}
+
+/* phone + mini playable */
+.phone-col{display:flex;flex-direction:column;align-items:center;gap:14px}
+.phone{width:min(300px,100%);aspect-ratio:9/18.5;background:var(--phone);border-radius:42px;padding:12px;box-shadow:0 30px 60px -30px rgba(27,31,59,.55)}
+.screen{position:relative;height:100%;border-radius:32px;background:var(--screen);color:var(--screen-ink);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px}
+.screen.reel{padding:0;background:#0A0C1A}
+.screen.reel video{width:100%;height:100%;object-fit:contain;display:block}
+.caption{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:32ch}
+.caption strong{color:var(--ink);font-weight:600}
+.caption a{color:var(--cta);font-weight:600}
+
+/* sections */
+section.block{padding:88px 0;border-top:1px solid var(--line)}
+.block h2{font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:800;letter-spacing:-0.015em;max-width:22ch}
+.intro{color:var(--muted);max-width:60ch;margin:16px 0 0}
+
+/* about */
+.about{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center}
+.about img{width:220px;height:220px;border-radius:50%;object-fit:cover;border:6px solid var(--surface);box-shadow:0 20px 40px -24px rgba(27,31,59,.5)}
+.about p{margin:16px 0 0;max-width:60ch}
+.about .actions{margin-top:24px}
+@media (max-width:640px){.about{grid-template-columns:1fr;gap:24px}.about img{width:160px;height:160px}}
+
+/* shipped titles */
+.titles{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.titles li{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.titles strong{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:1.15rem;font-weight:700;line-height:1.2}
+.titles span{display:block;margin-top:4px;color:var(--muted);font-size:.92rem}
+.titles a.store{display:inline-block;margin-top:10px;font-weight:600;font-size:.92rem;color:var(--cta)}
+.titles .watch{display:inline-flex;align-items:center;margin:12px 14px 0 0;padding:7px 16px;border-radius:999px;border:0;background:var(--cta);color:var(--cta-ink);font:inherit;font-weight:600;font-size:.92rem;cursor:pointer}
+.titles .watch:hover{filter:brightness(1.08)}
+dialog.player{border:0;padding:0;background:transparent;width:min(92vw,400px);max-width:none}
+dialog.player::backdrop{background:rgba(10,12,26,.78)}
+.player-inner{position:relative;background:var(--phone);border-radius:36px;padding:12px}
+.player video{display:block;width:100%;max-height:78vh;border-radius:26px;background:#000}
+.player .close{position:absolute;top:24px;right:24px;z-index:2;border:0;border-radius:999px;padding:6px 14px;background:rgba(0,0,0,.6);color:#fff;font:inherit;font-weight:600;font-size:.9rem;cursor:pointer}
+
+/* builders */
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.shots figure{margin:0}
+.shots img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line)}
+.shots figcaption{margin-top:10px;color:var(--muted);font-size:.92rem}
+@media (max-width:780px){.shots{grid-template-columns:1fr}}
+
+/* experience */
+.timeline{list-style:none;margin:44px 0 0;padding:0;border-left:3px solid var(--line)}
+.timeline li{position:relative;padding:0 0 36px 32px}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-10px;top:6px;width:17px;height:17px;border-radius:50%;background:var(--cta);border:4px solid var(--bg)}
+.timeline .when{margin:0;color:var(--muted);font-weight:600;font-size:.92rem}
+.timeline h3{font-size:1.35rem;font-weight:700;margin-top:4px}
+.timeline p{margin:10px 0 0;max-width:62ch}
+.timeline .games{color:var(--muted);font-size:.95rem}
+.game-links{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.game-links li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.game-links a{font-weight:600;color:var(--cta)}
+.game-links span{color:var(--muted);font-size:.95rem}
+
+/* work */
+.project{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;margin-top:56px}
+.thumb{width:180px;aspect-ratio:9/16;border-radius:28px;background:var(--phone);padding:9px;justify-self:center}
+.thumb .in{height:100%;border-radius:20px;background:var(--screen);display:grid;place-items:center}
+.thumb svg{width:70%;height:auto}
+.project h3{font-size:1.6rem;font-weight:700}
+.status{display:inline-block;margin-top:10px;font-size:.85rem;font-weight:600;padding:3px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+.project p{margin:14px 0 0;max-width:58ch}
+.tech{margin:14px 0 0;color:var(--muted);font-size:.95rem}
+.demo-link{display:inline-block;margin-top:16px;font-weight:600;color:var(--cta)}
+
+/* process */
+.steps{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:s}
+.steps li{counter-increment:s;border-top:4px solid var(--ink);padding-top:18px}
+.steps li::before{content:counter(s);font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:2rem;display:block;line-height:1}
+.steps h3{font-size:1.2rem;margin-top:10px}
+.steps p{margin:8px 0 0;color:var(--muted);font-size:.98rem}
+
+/* services */
+.services{margin-top:44px;display:grid;gap:0;border-top:1px solid var(--line)}
+.service{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:32px;padding:28px 0;border-bottom:1px solid var(--line)}
+.service h3{font-size:1.35rem;font-weight:700}
+.service p{margin:0;color:var(--muted)}
+.networks{margin-top:44px;background:var(--surface);border-radius:24px;padding:28px 32px}
+.networks h3{font-size:1.15rem}
+.networks p{margin:8px 0 0;color:var(--muted)}
+
+/* contact */
+.contact{background:var(--ink);color:var(--bg);border-radius:32px;padding:64px 48px;margin:88px 0}
+.contact h2{color:var(--bg)}
+.contact p{color:var(--bg);opacity:.8;max-width:52ch;margin:16px 0 0}
+.contact .btn.primary{background:var(--accent);color:var(--accent-ink)}
+.contact .btn.ghost{border-color:var(--bg);color:var(--bg)}
+.contact .btn.ghost:hover{background:transparent;opacity:.85}
+footer{padding:0 0 48px;color:var(--muted);font-size:.9rem}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:48px;padding:48px 0 64px}
+  .steps{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .top nav{gap:14px;font-size:.95rem}
+  .project{grid-template-columns:1fr;gap:20px}
+  .thumb{justify-self:start;width:140px}
+  .steps{grid-template-columns:1fr}
+  .service{grid-template-columns:1fr;gap:8px}
+  .contact{padding:44px 26px;border-radius:24px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Saad Akram</a>
+    <nav aria-label="Main">
+      <a href="#shipped">Work</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero">
+    <div>
+      <p class="where">Playable ads developer in Lahore, Pakistan</p>
+      <h1>Playable ads that pass network review the first time.</h1>
+      <p class="lede">I build playables in Unity with Luna Playworks, and hand-code lightweight HTML5 and Three.js playables when a smaller build wins. Every build ships ready for AppLovin, Google, TikTok, Mintegral, Meta and Unity Ads.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:saad.akram128@gmail.com?subject=Playable%20ad%20project">Email me about a project</a>
+        <a class="btn ghost" href="#shipped">See my work</a>
+      </div>
+    </div>
+    <div class="phone-col">
+      <div class="phone">
+        <div class="screen reel"><video id="reel" muted playsinline preload="auto" aria-label="Playable ads I built"></video></div>
+      </div>
+      <p class="caption" aria-live="polite"><strong id="reel-title">Bubble Pop: Color Splash</strong><br>Real playables I built. <a href="#shipped">See all of them</a></p>
+    </div>
+  </section>
+
+  <section class="block about" id="about">
+    <img src="assets/saad-akram.jpg" alt="Saad Akram">
+    <div>
+      <h2>Hi, I’m Saad.</h2>
+      <p>I’ve spent 4+ years making mobile games in Lahore: first as a Unity developer shipping 10+ casual titles, and since 2025 building playable ads full-time.</p>
+      <p>My focus is the moment that makes someone want the full game, delivered in a build small enough to load instantly on any phone.</p>
+      <div class="actions">
+        <a class="btn ghost" id="cv-link" href="assets/Saad_Akram_CV.pdf" target="_blank" rel="noopener">View my CV (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="shipped">
+    <h2>Playables I’ve shipped</h2>
+    <p class="intro">Playable ads I built for published mobile games, in Unity with Luna Playworks and in hand-coded HTML5.</p>
+    <ul class="titles">
+      <li><strong>Bubble Pop: Color Splash</strong><span>Bubble shooter</span><button class="watch" data-video="assets/bubble-pop-playable.mp4" data-title="Bubble Pop: Color Splash">Watch the playable</button><a class="store" href="https://play.google.com/store/apps/details?id=com.gdm.bubblepop" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>Arrows Frenzy Flow</strong><span>Arrow puzzle</span><button class="watch" data-video="assets/arrows-frenzy-playable.mp4" data-title="Arrows Frenzy Flow">Watch the playable</button><a class="store" href="https://play.google.com/store/apps/details?id=com.gdm.arrowfrenzy" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>Block Slide</strong><span>Block puzzle</span><button class="watch" data-video="assets/block-slide-playable.mp4" data-title="Block Slide">Watch the playable</button><a class="store" href="https://play.google.com/store/apps/details?id=com.gdm.blockslide" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>CopDoku – Escape Puzzle Games</strong><span>Logic puzzle</span><button class="watch" data-video="assets/copdoku-playable.mp4" data-title="CopDoku – Escape Puzzle Games">Watch the playable</button><a class="store" href="https://play.google.com/store/apps/details?id=com.PlayBliss.Pawdoku" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>Tangle Pop: Rubber Band Puzzle</strong><span>Untangle puzzle</span><button class="watch" data-video="assets/tangle-pop-playable.mp4" data-title="Tangle Pop: Rubber Band Puzzle">Watch the playable</button><a class="store" href="https://play.google.com/store/apps/details?id=com.PlayBliss.TanglePop" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>My Plane Simulator 3D</strong><span>3D flight simulator</span><button class="watch" data-video="assets/plane-sim-playable.mp4" data-title="My Plane Simulator 3D">Watch the playable</button><a class="store" href="https://play.google.com/store/apps/details?id=com.gdm.myplanesimulator" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>Yarn Sort: Color Match</strong><span>Sort puzzle</span><a class="store" href="https://play.google.com/store/apps/details?id=com.gdm.yarnsort" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>Wonder Sort: Color Puzzle</strong><span>Sort puzzle</span><a class="store" href="https://play.google.com/store/apps/details?id=com.GameDistrict.WonderSort" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>Maze Fill</strong><span>Maze puzzle</span><a class="store" href="https://play.google.com/store/apps/details?id=com.gdm.mazefill" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>Numberix</strong><span>Number path puzzle</span><a class="store" href="https://play.google.com/store/apps/details?id=com.gdm.numberix" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>Shape Away</strong><span>Shape puzzle</span><a class="store" href="https://play.google.com/store/apps/details?id=com.gdm.shapeaway" target="_blank" rel="noopener">View on Google Play</a></li>
+      <li><strong>Solitaire Word Connect</strong><span>Word and solitaire</span><a class="store" href="https://play.google.com/store/apps/details?id=com.gdm.solitaireword" target="_blank" rel="noopener">View on Google Play</a></li>
+    </ul>
+  </section>
+
+  <section class="block" id="builders">
+    <h2>Playable ad builders I’ve built</h2>
+    <p class="intro">Instead of hand-making every playable, I build a reusable HTML5 builder for each game. New playables and variants are then set up in the builder instead of starting from scratch each time. I’ve built builders for Bubble Pop: Color Splash, Arrows Frenzy Flow, Block Slide, Shape Away, Tangle Pop, CopDoku and Numberix.</p>
+    <div class="shots">
+      <figure><a href="assets/builder-tangle.jpg" target="_blank" rel="noopener"><img src="assets/builder-tangle.jpg" alt="Tangle Pop playable builder: level playlist, live phone preview and network settings" loading="lazy"></a><figcaption>Tangle Pop builder: pick levels from the game, preview live on a phone frame, set the store link and analytics per network.</figcaption></figure>
+      <figure><a href="assets/builder-numberix.jpg" target="_blank" rel="noopener"><img src="assets/builder-numberix.jpg" alt="Numberix playable builder: level list, live preview and export size breakdown" loading="lazy"></a><figcaption>Numberix builder: loads levels from the game’s JSON files, checks each level, and shows the export size against the 5 MB limit.</figcaption></figure>
+    </div>
+    <div class="services">
+      <div class="service"><h3>Live preview</h3><p>Change levels, colors, assets and CTA, and see the playable update instantly in the browser.</p></div>
+      <div class="service"><h3>Real levels from the game</h3><p>Levels load straight from the game’s Unity JSON files, with the movement rules rebuilt in JavaScript to match the game exactly.</p></div>
+      <div class="service"><h3>One-click multi-network export</h3><p>Single-file, MRAID-compliant builds for AppLovin, Google, TikTok and Mintegral, with every asset inlined and under 5 MB.</p></div>
+      <div class="service"><h3>Smooth on low-end phones</h3><p>Redraws only what changes, caps the pixel ratio and pre-renders static layers, so playables stay smooth on cheap Android devices.</p></div>
+      <div class="service"><h3>Animation and sound</h3><p>Spine animation through WebGL and sound through the Web Audio API, without adding heavy libraries.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <h2>Experience</h2>
+    <ol class="timeline">
+      <li>
+        <p class="when">Sep 2025 – present</p>
+        <h3>Playable Ads Developer, Game District</h3>
+        <p>I build playable ads for the studio’s mobile games in Unity with Luna Playworks and in hand-coded HTML5, plus a reusable builder for each game. Every playable ships network-ready for AppLovin, Google, TikTok, Mintegral, Meta and Unity Ads.</p>
+      </li>
+      <li>
+        <p class="when">2026</p>
+        <h3>Freelance Playable Ads Developer</h3>
+        <p>Built a playable ad for a mobile game studio in China from their source code and reference build, and delivered the final HTML build with the full source project.</p>
+      </li>
+      <li>
+        <p class="when">Apr 2022 – Aug 2025</p>
+        <h3>Unity Developer, Game District</h3>
+        <p>Shipped 10+ casual and hyper-casual mobile games in Unity and C#, building gameplay mechanics, UI and animations with DOTween.</p>
+        <ul class="game-links">
+          <li><a href="https://play.google.com/store/apps/details?id=com.stresstap.ease.asmr" target="_blank" rel="noopener">Stress Tap Ease: ASMR Games</a><span>Built around 80–100 of its mini-games before moving to playables; the team has kept developing it since</span></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.piggypanda.learninggames" target="_blank" rel="noopener">Piggy Panda: Learning Games</a><span>Developed several of the mini-games in this learning app</span></li>
+        </ul>
+        <p class="games">Several other games I built from scratch were later taken down from the store, so they aren’t linked here.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="block" id="work">
+    <h2>What I’m exploring</h2>
+    <p class="intro">A side project outside my day-to-day playable work.</p>
+    <div id="projects"></div>
+  </section>
+
+  <section class="block" id="process">
+    <h2>How I take a playable from brief to live</h2>
+    <ol class="steps">
+      <li><h3>Brief and mechanic</h3><p>I pick the one mechanic that sells your game and plan the hook, play time and end card around it.</p></li>
+      <li><h3>Build</h3><p>Unity with Luna Playworks, or hand-coded HTML5 when a lighter build is the better fit.</p></li>
+      <li><h3>Optimize</h3><p>Under 5 MB, fast first frame, and smooth on low-end Android phones.</p></li>
+      <li><h3>Export and QA</h3><p>Network-specific builds, MRAID checks and device testing, so review passes the first time.</p></li>
+    </ol>
+  </section>
+
+  <section class="block" id="services">
+    <h2>What I can build for you</h2>
+    <p class="intro">4+ years in mobile games and 10+ shipped casual titles before I moved fully into playables.</p>
+    <div class="services">
+      <div class="service"><h3>Playable ad development</h3><p>A playable from concept to network-ready build, with gameplay, CTA and end card. You get the final build and the full source project.</p></div>
+      <div class="service"><h3>Unity to Luna conversion</h3><p>Your existing Unity game or prototype turned into a lightweight playable, with compatibility fixes and size optimization handled.</p></div>
+      <div class="service"><h3>Export and optimization</h3><p>Already have a playable? I adapt it for more networks, fix MRAID and review issues, shrink the build and improve performance.</p></div>
+    </div>
+    <div class="networks">
+      <h3>Networks I deliver for</h3>
+      <p>AppLovin, Google Ads, TikTok and Pangle, Mintegral, Meta, Unity Ads</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Have a playable in mind?</h2>
+    <p>Tell me about your game, the networks you need and your deadline. I take on freelance and contract projects.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:saad.akram128@gmail.com?subject=Playable%20ad%20project">Email saad.akram128@gmail.com</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/saadakram-dev" target="_blank" rel="noopener">Message me on LinkedIn</a>
+    </div>
+  </section>
+</main>
+<dialog class="player" id="player" aria-label="Playable video">
+  <div class="player-inner">
+    <button class="close" id="player-close">Close</button>
+    <video id="player-video" controls playsinline muted loop></video>
+  </div>
+</dialog>
+<footer class="wrap">© 2026 Saad Akram</footer>
+
+<script>
+/* ---------- Projects: add a demo link to any project to show a "Play the demo" link ---------- */
+const PROJECTS = [
+  {
+    name: "AI playable workflow",
+    status: "Exploring",
+    text: "An AI-assisted workflow that turns a game description into a working HTML5 playable, built on reusable builder templates so new concepts can be tested in hours, not days.",
+    tech: "JavaScript, HTML5, AI-assisted tooling",
+    demo: "",
+    art: '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M30 34 L14 50 L30 66" stroke="#34D399" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M70 34 L86 50 L70 66" stroke="#34D399" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 24 L56 40 L72 44 L56 48 L52 64 L48 48 L32 44 L48 40 Z" fill="#FFC83D"/></svg>'
+  }
+];
+const host = document.getElementById("projects");
+PROJECTS.forEach(p => {
+  const el = document.createElement("article");
+  el.className = "project";
+  el.innerHTML =
+    '<div class="thumb"><div class="in">' + p.art + '</div></div>' +
+    '<div><h3></h3><span class="status"></span><p class="desc"></p><p class="tech"></p>' +
+    (p.demo ? '<a class="demo-link" target="_blank" rel="noopener">Play the demo</a>' : '') + '</div>';
+  el.querySelector("h3").textContent = p.name;
+  el.querySelector(".status").textContent = p.status;
+  el.querySelector(".desc").textContent = p.text;
+  el.querySelector(".tech").textContent = p.tech;
+  if (p.demo) el.querySelector(".demo-link").href = p.demo;
+  host.appendChild(el);
+});
+
+/* ---------- Playable video player ---------- */
+const player = document.getElementById("player");
+const pv = document.getElementById("player-video");
+document.querySelectorAll(".watch").forEach(b => b.addEventListener("click", () => {
+  pv.src = b.dataset.video;
+  player.setAttribute("aria-label", b.dataset.title + " playable video");
+  player.showModal();
+  pv.play().catch(() => {});
+}));
+function closePlayer(){ pv.pause(); pv.removeAttribute("src"); pv.load(); if (player.open) player.close(); }
+document.getElementById("player-close").addEventListener("click", closePlayer);
+player.addEventListener("click", e => { if (e.target === player) closePlayer(); });
+player.addEventListener("cancel", () => { pv.pause(); });
+
+/* ---------- Hero reel: real playables, one after another ---------- */
+const REEL = [...document.querySelectorAll(".titles .watch")].map(b => ({src: b.dataset.video, title: b.dataset.title}));
+const reel = document.getElementById("reel");
+const reelTitle = document.getElementById("reel-title");
+let ri = 0;
+function showReel(i){
+  ri = (i + REEL.length) % REEL.length;
+  reel.src = REEL[ri].src;
+  reelTitle.textContent = REEL[ri].title;
+  reel.play().catch(() => {});
+}
+if (REEL.length){
+  const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  reel.addEventListener("ended", () => showReel(ri + 1));
+  if (still){ reel.controls = true; reel.src = REEL[0].src; reelTitle.textContent = REEL[0].title; }
+  else showReel(0);
+}
+</script>
+</body>
+</html>
